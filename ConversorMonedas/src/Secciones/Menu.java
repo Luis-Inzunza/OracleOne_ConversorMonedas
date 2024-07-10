@@ -18,8 +18,4 @@ public class Menu {
 
         return Integer.parseInt(busqueda);
     }
-
-    public void Final(int cambio, String monedaAConsultar, String monedaAConvertir){
-
-    }
 }
