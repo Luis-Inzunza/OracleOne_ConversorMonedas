@@ -13,12 +13,12 @@ public class Main {
         Consulta consultar = new Consulta();
 
         while(true){
+
             int moneda = programa.Bienvenida();
             conversiones.Elegir(moneda);
             if (Objects.equals(conversiones.getMonedasUrl(), "Salir")) break;
             conversiones.Monto();
-            consultar.Coneccion();
-
+            consultar.Coneccion(conversiones.getMonedasUrl(),conversiones.getMontoUrl());
         }
     }
 }

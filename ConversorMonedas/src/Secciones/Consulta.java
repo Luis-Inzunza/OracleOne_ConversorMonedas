@@ -12,11 +12,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Consulta {
-    private String link = "https://v6.exchangerate-api.com/v6/e9dc1ede6703f48c3a59acf3/pair/MXN/USD/5";
+    private String link = "https://v6.exchangerate-api.com/v6/e9dc1ede6703f48c3a59acf3/pair";
 
-    public void Coneccion(){
+    public void Coneccion(String monedasAConsultar,String monto){
         try{
-            URL url = new URL(link);
+            URL url = new URL(link + monedasAConsultar + monto);
             HttpURLConnection request = (HttpURLConnection) url.openConnection();
             request.connect();
             JsonParser jp = new JsonParser();
@@ -24,7 +24,9 @@ public class Consulta {
             JsonObject jsonobj = root.getAsJsonObject();
 
             String req_result = String.valueOf(jsonobj.get("conversion_result").getAsString());
+
             System.out.println(req_result);
+            System.out.println("*****");
         }catch (MalformedURLException e) {
             System.out.println("La conexion no fue realizada");
             System.out.println(e.getMessage());
