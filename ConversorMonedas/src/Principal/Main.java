@@ -1,22 +1,24 @@
 package Principal;
 
 import Secciones.Consulta;
-import com.google.gson.*;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
+import Secciones.Conversiones;
 import Secciones.Menu;
+
+import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
         Menu programa = new Menu();
+        Conversiones conversiones = new Conversiones();
         Consulta consultar = new Consulta();
+
         while(true){
-            int respuesta = programa.Bienvenida();
+            int moneda = programa.Bienvenida();
+            conversiones.Elegir(moneda);
+            if (Objects.equals(conversiones.getMonedasUrl(), "Salir")) break;
+            conversiones.Monto();
             consultar.Coneccion();
 
         }
     }
-
 }
